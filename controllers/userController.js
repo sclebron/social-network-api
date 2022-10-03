@@ -4,12 +4,12 @@ module.exports = {
     //get all users
     getUsers(req, res) {
         User.find()
-        .then((users) => res.json(users))
+        .then((dbUserData) => res.json(dbUserData))
         .catch((err) => res.status(500).json(err));
     },
     //get a single user by its id
     getUserById(req, res) {
-        User.findONe({_id: req.params.userId})
+        User.findOne({_id: req.params.userId})
             .populate({
                 path: 'thoughts',
                 select: '-__v'
@@ -19,10 +19,10 @@ module.exports = {
                 select: '-__v'
             })
             .select('-__v')
-            .then((user) => 
-                !user
+            .then((dbUserData) => 
+                !(dbUserData)
                     ? res.status(404),json({message: 'No user with this Id found'})
-                    : res.json(user)
+                    : res.json(dbThoughtData)
             )
             .catch((err) => res.status(500).json(err));
     },
