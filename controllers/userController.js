@@ -21,7 +21,7 @@ module.exports = {
             .select('-__v')
             .then((dbUserData) => 
                 !(dbUserData)
-                    ? res.status(404),json({message: 'No user with this Id found'})
+                    ? res.status(500).json({message: 'No user with this Id found'})
                     : res.json(dbThoughtData)
             )
             .catch((err) => res.status(500).json(err));
@@ -44,4 +44,26 @@ module.exports = {
             .then((dbUserData) => res.json(dbUserData))
             .catch((err) => res.status(500).json(err));
     },
+    //add a friend
+    addFriend(req, res) {
+        User.findOneAndUpdate({_id: req.params.friendId}, {$push: {friends: params.friendsId}}, {new: true}
+        )
+        .then((dbUserData) => 
+                !(dbUserData)
+                    ? res.status(500).json({message: 'No user with this Id found'})
+                    : res.json(dbUserData)
+            )
+            .catch((err) => res.status(500).json(err));
+    },
+    //delete a friend
+    deleteFriend(req, res) {
+        User.findOneAndUpdate({_id: req.params.friendId}, {$pull: {friends: params.friendId}}, {new: true}
+        )
+        .then((dbUserData) => 
+            !(dbUserData)
+                ? res.status(500).json({message: 'No user with this Id found'})
+                : res.json(dbUserData)
+        )
+        .catch((err) => res.status(500).json(err));
+    }
 };
