@@ -8,6 +8,7 @@ const {
     addFriend,
     deleteFriend
 } = require('../../controllers/userController');
+// console.log(getUsers)
 
 router.route('/').get(getUsers);
 router.route('/:id').get(getUserById);
