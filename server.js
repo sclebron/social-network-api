@@ -16,11 +16,9 @@ mongodb.connect(
 
     { useNewUrlParser: true, useUnifiedTopology: true },
     (err, client) => {
-      db = client.db();
-      app.listen(PORT, () => {
+    db = client.db();
+    app.listen(PORT, () => {
         console.log(`Now listening at http://localhost:${PORT}`);
-      });
+    });
     }
 );
-
-  
