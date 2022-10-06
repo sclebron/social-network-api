@@ -1,9 +1,26 @@
 const { User, Thought } = require('../models');
 
 module.exports = {
+    getThoughts: async (req, res) => {
+        try {
+            const dbThoughtData = await Thought.find({})
+            console.log(dbThoughtData)
+        res.json(dbThoughtData)
+        } catch (err) {
+            console.log(err)
+            res.status(500).json(err)
+        }
+    },
+    getThoughtById: async (req, res) => {
+        
+    }
+    
+    
+    
+    
+    
     getThoughts(req, res) {
         Thought.find()
-        // .sort({createdAt: -1})
         .then((dbUserData) => res.json(dbUserData))
         .catch((err) => res.status(500).json(err));
     },
