@@ -71,8 +71,8 @@ module.exports = {
 
     //add a friend
     addFriend: async (req, res) => {
-        try {
-            const dbUserData = await User.findOneAndUpdate({_id: req.params.friendId}, {$push: {friends: params.friendsId}}, {new: true})
+        try { 
+            const dbUserData = await User.findOneAndUpdate({_id: req.params.friendId}, {$push: {friends: req.body}}, {new: true})
             console.log(dbUserData)
         res.json(dbUserData)
         } catch (err) {

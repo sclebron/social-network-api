@@ -1,7 +1,7 @@
 const addDateSuffix = date => {
     let dateStr = date.toString();
     
-    const lastChar = date.Str.charAT(dateStr.length -1);
+    const lastChar = dateStr.charAt(dateStr.length -1);
 
     if (lastChar === '1' && dateStr !== '11') {
         date.Str = `${dateStr}st`;
@@ -53,8 +53,8 @@ module.exports = (
         };
     }
 
-    const dateOBj = new Date(timestamp);
-    const formattedMonth = months[dateOBj.getMonth()];
+    const dateObj = new Date(timestamp);
+    const formattedMonth = months[dateObj.getMonth()];
 
     let dayOfMonth; 
 
@@ -63,7 +63,7 @@ module.exports = (
     } else {
         dayOfMonth = dateObj.getDate();
     }
-    const year = date.Obj.getFullYear();
+    const year = dateObj.getFullYear();
 
     let hour;
 
