@@ -19,18 +19,3 @@ db.once('open', () => {
     });
 });
 
-// const connectionStringURI = `mongodb://127.0.0.1:27017/social-network-api`;
-
-
-// mongodb.connect(
-//     connectionStringURI,
-
-//     { useNewUrlParser: true, useUnifiedTopology: true },
-//     (err, client) => {
-//     db = client.db();
-//     app.use(routes);
-//     app.listen(PORT, () => {
-//         console.log(`Now listening at http://localhost:${PORT}`);
-//     });
-//     }
-// );
